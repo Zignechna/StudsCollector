@@ -66,9 +66,19 @@ npm run catalog:import
 İlki tabloları oluşturur, ikincisi temaları/setleri/figürleri ve Marvel envanterlerini aktarır.
 Kalan temaları her gece GitHub Actions otomatik aktarır.
 
-## 6. Anahtarları GitHub'a (Actions için) gönder
+## 6. GitHub Actions'ı aç ve anahtarları gönder
 
-Aynı terminalde:
+Gece çalışan otomatik işler (katalog aktarımı, fiyat kontrolü, yedek) GitHub'a henüz gönderilmedi,
+çünkü bunun için GitHub hesabına bir izin (workflow) vermen gerekiyor. Proje klasöründeki terminalde:
+
+```
+gh auth refresh -h github.com -s workflow
+git push
+```
+
+İlk komut tarayıcıda GitHub'ı açar: ekrandaki kodu gir ve **Authorize** de. İkinci komut iş akışlarını yükler.
+
+Sonra aynı terminalde:
 
 ```
 npm run secrets:push
