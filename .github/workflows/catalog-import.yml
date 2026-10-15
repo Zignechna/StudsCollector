@@ -42,7 +42,7 @@ jobs:
         with:
           node-version: 24
           cache: npm
-      - run: npm ci --ignore-scripts
+      - run: npm install --no-audit --no-fund --ignore-scripts
         if: steps.cfg.outputs.skip != 'true'
       - name: Database migrations
         if: steps.cfg.outputs.skip != 'true'
