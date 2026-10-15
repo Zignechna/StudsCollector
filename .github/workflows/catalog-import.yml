@@ -1,0 +1,58 @@
+name: Catalog import (nightly)
+
+on:
+  schedule:
+    - cron: "0 1 * * *" # every night 04:00 Türkiye
+  workflow_dispatch:
+    inputs:
+      max_rows:
+        description: "Max inventory rows to write in this run"
+        required: false
+        default: "300000"
+
+concurrency:
+  group: catalog-import
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+      TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+      REBRICKABLE_API_KEY: ${{ secrets.REBRICKABLE_API_KEY }}
+      BRICKSET_API_KEY: ${{ secrets.BRICKSET_API_KEY }}
+      NEXT_PUBLIC_VAPID_PUBLIC_KEY: ${{ secrets.NEXT_PUBLIC_VAPID_PUBLIC_KEY }}
+      VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+      VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT }}
+      CATALOG_MAX_ROWS: ${{ inputs.max_rows || '300000' }}
+    steps:
+      - name: Check configuration
+        id: cfg
+        run: |
+          if [ -z "$TURSO_DATABASE_URL" ]; then
+            echo "TURSO_DATABASE_URL secret is not set — skipping. Run 'npm run secrets:push' locally."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.cfg.outputs.skip != 'true'
+      - uses: actions/setup-node@v4
+        if: steps.cfg.outputs.skip != 'true'
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --ignore-scripts
+        if: steps.cfg.outputs.skip != 'true'
+      - name: Database migrations
+        if: steps.cfg.outputs.skip != 'true'
+        run: npm run db:migrate
+      - name: Rebrickable catalog (light data + next themes in queue)
+        if: steps.cfg.outputs.skip != 'true'
+        run: npm run catalog:import
+      - name: Brickset retirement dates
+        if: steps.cfg.outputs.skip != 'true'
+        run: npm run catalog:brickset
+      - name: Retirement notifications
+        if: steps.cfg.outputs.skip != 'true'
+        run: npm run notify:retirements

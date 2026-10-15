@@ -1,0 +1,41 @@
+name: Price check
+
+on:
+  schedule:
+    - cron: "15 5,11,17 * * *" # 08:15, 14:15, 20:15 Türkiye
+  workflow_dispatch:
+
+concurrency:
+  group: price-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+      TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+      NEXT_PUBLIC_VAPID_PUBLIC_KEY: ${{ secrets.NEXT_PUBLIC_VAPID_PUBLIC_KEY }}
+      VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+      VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT }}
+    steps:
+      - name: Check configuration
+        id: cfg
+        run: |
+          if [ -z "$TURSO_DATABASE_URL" ]; then
+            echo "TURSO_DATABASE_URL secret is not set — skipping."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.cfg.outputs.skip != 'true'
+      - uses: actions/setup-node@v4
+        if: steps.cfg.outputs.skip != 'true'
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --ignore-scripts
+        if: steps.cfg.outputs.skip != 'true'
+      - name: Check prices and send notifications
+        if: steps.cfg.outputs.skip != 'true'
+        run: npm run prices:check
