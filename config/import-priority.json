@@ -1,0 +1,8 @@
+{
+  "$comment": "Order in which heavy catalog data (set part inventories) is imported. Each entry matches themes by exact id or by case-insensitive name substring; every matching theme is imported together with all of its sub-themes. Themes not listed here are imported afterwards, largest (most sets) first.",
+  "priority": [
+    { "nameIncludes": "Marvel" },
+    { "id": 535, "label": "Collectible Minifigures" }
+  ],
+  "maxRowsPerRun": 300000
+}
