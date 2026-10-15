@@ -47,3 +47,6 @@ local.db-*
 *.db-journal
 .catalog-cache/
 backups/
+
+.vercel
+.env*
