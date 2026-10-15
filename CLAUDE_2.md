@@ -1,4 +1,4 @@
-# BrickKasa — Kişisel LEGO Koleksiyon Takip Uygulaması
+# StudsCollector — Kişisel LEGO Koleksiyon Takip Uygulaması
 
 Kişisel kullanım için LEGO koleksiyon takibi (Aşama 1) ve genel fiyat düşüşü takibi (Aşama 2). Açık kaynak yayınlanabilir, ticari amaç yok.
 Hem PC hem mobilden kullanılacak (responsive web + PWA, gerekirse APK). Arayüz dili: **Türkçe**. Kod, değişken adları ve commit mesajları: **İngilizce**.

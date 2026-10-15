@@ -45,6 +45,6 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: steps.cfg.outputs.skip != 'true'
         with:
-          name: brickkasa-backup-${{ github.run_number }}
+          name: studscollector-backup-${{ github.run_number }}
           path: backups/*.enc
           retention-days: 90

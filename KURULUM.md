@@ -1,4 +1,4 @@
-# BrickKasa — Kurulum Rehberi (adım adım)
+# StudsCollector — Kurulum Rehberi (adım adım)
 
 Bu dosya, uygulamanın çalışması için **senin** yapman gereken her şeyi sırayla anlatır.
 Kodla ilgili her şey hazır; sadece hesap açıp anahtarları kopyalaman gerekiyor.
@@ -29,12 +29,12 @@ Kodla ilgili her şey hazır; sadece hesap açıp anahtarları kopyalaman gereki
 
 1. https://turso.tech adresine git → **Sign up** / **Login** → **Continue with GitHub**.
 2. Panelde **Databases** → **Create Database**.
-   - Name: `brickkasa`
+   - Name: `studscollector`
    - Location / Region: listede **Avrupa'daki herhangi bir bölge** (ör. "Europe (Ireland)" / `aws-eu-west-1`).
      Avrupa yoksa herhangi biri olur — kişisel kullanımda fark hissedilmez.
    - **Create** de.
 3. Açılan veritabanı sayfasında:
-   - **URL**'yi kopyala (`libsql://brickkasa-KULLANICIADIN.turso.io` gibi görünür)
+   - **URL**'yi kopyala (`libsql://studscollector-KULLANICIADIN.turso.io` gibi görünür)
      → `.env.local` içinde `TURSO_DATABASE_URL=` satırına yapıştır.
    - **Create Token** (veya "Generate Token") butonuna bas → Expiration: **Never**, izin: **Read & Write**
      → çıkan uzun token'ı `TURSO_AUTH_TOKEN=` satırına yapıştır.

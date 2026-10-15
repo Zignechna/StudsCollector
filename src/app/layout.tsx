@@ -12,10 +12,10 @@ const display = Barlow_Condensed({
 });
 
 export const metadata: Metadata = {
-  title: { default: "BrickKasa", template: "%s · BrickKasa" },
+  title: { default: "StudsCollector", template: "%s · StudsCollector" },
   description: "Kişisel LEGO koleksiyon takibi",
-  applicationName: "BrickKasa",
-  appleWebApp: { capable: true, title: "BrickKasa", statusBarStyle: "black-translucent" },
+  applicationName: "StudsCollector",
+  appleWebApp: { capable: true, title: "StudsCollector", statusBarStyle: "black-translucent" },
   icons: {
     icon: [
       { url: "/icons/favicon-32.png", sizes: "32x32", type: "image/png" },

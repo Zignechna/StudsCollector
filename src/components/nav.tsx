@@ -71,7 +71,7 @@ export function TopNav() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/5 bg-header/95 backdrop-blur supports-[backdrop-filter]:bg-header/85">
       <div className="mx-auto flex h-14 max-w-[1400px] items-center gap-4 px-4 lg:px-6">
-        <Link href="/" className="shrink-0" aria-label="BrickKasa ana sayfa">
+        <Link href="/" className="shrink-0" aria-label="StudsCollector ana sayfa">
           <Logo />
         </Link>
         <div className="mx-2 hidden max-w-md flex-1 md:block">

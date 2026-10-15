@@ -1,7 +1,7 @@
 /**
  * Restores user data from a backup JSON (created by db:backup or the Settings page).
  * Existing user rows are REPLACED. Catalog tables are untouched.
- * Usage: npm run db:restore -- backups/brickkasa-2026-10-15.json
+ * Usage: npm run db:restore -- backups/studscollector-2026-10-15.json
  */
 import "./env";
 import fs from "node:fs";
@@ -21,7 +21,7 @@ async function main() {
     manualExitDates?: { set_num: string; exit_date_manual: string }[];
     settings?: { key: string; value: string }[];
   };
-  if (data.app !== "brickkasa") throw new Error("Not a BrickKasa backup file.");
+  if (data.app !== "studscollector" && data.app !== "brickkasa") throw new Error("Not a StudsCollector backup file.");
   const statements: InStatement[] = [];
   for (const t of USER_TABLES) statements.push(`DELETE FROM ${t}`);
   for (const t of USER_TABLES) {

@@ -1,4 +1,4 @@
-/* BrickKasa service worker: offline fallback, static asset caching and Web Push. */
+/* StudsCollector service worker: offline fallback, static asset caching and Web Push. */
 const VERSION = "bk-v1";
 const STATIC_CACHE = `${VERSION}-static`;
 const IMAGE_CACHE = `${VERSION}-images`;
@@ -83,10 +83,10 @@ self.addEventListener("push", (event) => {
   try {
     data = event.data ? event.data.json() : {};
   } catch {
-    data = { title: "BrickKasa", body: event.data ? event.data.text() : "" };
+    data = { title: "StudsCollector", body: event.data ? event.data.text() : "" };
   }
   event.waitUntil(
-    self.registration.showNotification(data.title || "BrickKasa", {
+    self.registration.showNotification(data.title || "StudsCollector", {
       body: data.body || "",
       icon: "/icons/icon-192.png",
       badge: "/icons/badge-96.png",

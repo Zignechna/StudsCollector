@@ -1,4 +1,4 @@
-# BrickKasa
+# StudsCollector
 
 Kişisel LEGO koleksiyon takip uygulaması: setler, minifigürler, parça envanteri, eksik parçalar, çok modlu setler, istek listesi, emeklilik tarihleri, alternatif build / MOC eşleştirme ve mağazalar arası **fiyat takibi** (Web Push bildirimli).
 

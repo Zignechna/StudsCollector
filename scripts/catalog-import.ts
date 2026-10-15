@@ -48,7 +48,7 @@ async function download(name: string): Promise<string> {
   fs.mkdirSync(CACHE_DIR, { recursive: true });
   const file = path.join(CACHE_DIR, `${name}.csv.gz`);
   if (fs.existsSync(file) && Date.now() - fs.statSync(file).mtimeMs < CACHE_MAX_AGE_MS) return file;
-  const res = await fetch(CDN + `${name}.csv.gz`, { headers: { "User-Agent": "BrickKasa catalog import" } });
+  const res = await fetch(CDN + `${name}.csv.gz`, { headers: { "User-Agent": "StudsCollector catalog import" } });
   if (!res.ok) throw new Error(`Download failed for ${name}: HTTP ${res.status}`);
   fs.writeFileSync(file, Buffer.from(await res.arrayBuffer()));
   return file;

@@ -26,7 +26,7 @@ export async function removePushSubscription(endpoint: string) {
 export async function sendTestPush() {
   await requireAuth();
   if (!pushConfigured()) return { ok: false, message: "VAPID anahtarları tanımlı değil." };
-  const res = await sendPushToAll({ title: "BrickKasa", body: "Test bildirimi — bildirimler çalışıyor! 🧱", url: "/ayarlar", tag: "test" });
+  const res = await sendPushToAll({ title: "StudsCollector", body: "Test bildirimi — bildirimler çalışıyor! 🧱", url: "/ayarlar", tag: "test" });
   return res.sent > 0
     ? { ok: true, message: `${res.sent} cihaza gönderildi.` }
     : { ok: false, message: "Kayıtlı cihaz yok veya gönderim başarısız." };

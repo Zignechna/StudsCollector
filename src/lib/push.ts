@@ -11,7 +11,7 @@ export function pushConfigured() {
 export async function sendPushToAll(payload: PushPayload): Promise<{ sent: number; failed: number }> {
   if (!pushConfigured()) return { sent: 0, failed: 0 };
   webpush.setVapidDetails(
-    process.env.VAPID_SUBJECT || "mailto:admin@brickkasa.local",
+    process.env.VAPID_SUBJECT || "mailto:admin@studscollector.local",
     process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
     process.env.VAPID_PRIVATE_KEY!,
   );

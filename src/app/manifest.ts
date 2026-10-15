@@ -3,8 +3,8 @@ import type { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     id: "/",
-    name: "BrickKasa — LEGO Koleksiyonum",
-    short_name: "BrickKasa",
+    name: "StudsCollector — LEGO Koleksiyonum",
+    short_name: "StudsCollector",
     description: "Kişisel LEGO koleksiyon, parça ve fiyat takibi",
     lang: "tr",
     dir: "ltr",

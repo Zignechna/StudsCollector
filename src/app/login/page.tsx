@@ -23,7 +23,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
         <div className="mb-8 flex flex-col items-center text-center">
           <LogoMark className="mb-4 size-16" />
           <h1 className="font-display text-4xl font-bold uppercase tracking-wider text-white">
-            Brick<span className="text-accent">Kasa</span>
+            Studs<span className="text-accent">Collector</span>
           </h1>
           <p className="mt-1 text-sm text-white/50">Kişisel LEGO koleksiyonun</p>
         </div>

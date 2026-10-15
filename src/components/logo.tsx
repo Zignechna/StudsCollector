@@ -18,7 +18,7 @@ export function Logo() {
     <span className="flex items-center gap-2">
       <LogoMark className="size-7" />
       <span className="font-display text-xl font-bold uppercase tracking-wider text-white">
-        Brick<span className="text-accent">Kasa</span>
+        Studs<span className="text-accent">Collector</span>
       </span>
     </span>
   );

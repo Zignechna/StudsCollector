@@ -31,7 +31,7 @@ export async function exportUserData() {
   const manual = await client.execute(MANUAL_CATALOG_SQL);
   const settings = await client.execute("SELECT key, value FROM app_settings WHERE key IN ('password_hash', 'checked_mocs')");
   return {
-    app: "brickkasa",
+    app: "studscollector",
     version: 1,
     exportedAt: new Date().toISOString(),
     tables,
